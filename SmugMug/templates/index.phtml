@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>SmugMug</title>
+<link type="text/css" rel="stylesheet" href="/static/smugmug.css">
+</head>
+<body>
+
+<% javascript_includes %>
+
+<img src="/static/spinner.gif" id="spinner" style="display: none">
+
+<% remote_form id="myform" url="/search" update="photos" 
+   success="var spinner = document.getElementById('spinner'); spinner.style.display = 'none';"
+   complete="var div = document.getElementById('photos');div.style.display = ''; dojo.graphics.htmlEffects.wipeIn(div, 300);"
+   begin="var spinner = document.getElementById('spinner'); spinner.style.display = '';"
+%>
+
+<fieldset>
+  <label for="keywords">Keywords:</label>
+  <input type="text" name="keywords"/>
+  <input type="submit" 
+         value="Find"/>
+</fieldset>
+
+<div id="photos" style="display: none;"></div>
+
+</form>
+</body>
+</html>
