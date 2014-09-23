@@ -1,14 +1,19 @@
 inherit Fins.FinsController;
+inherit Fins.RootController;
 
-public void index(Fins.Request id, Fins.Response response, mixed ... args)
+static void create(object app)
+{
+  ::create(app);
+}
+
+void index(Fins.Request id, Fins.Response response, mixed ... args)
 {
   object t = view->get_view("index");
   response->set_view(t);  
 } 
 
-public void search(Fins.Request id, Fins.Response response, mixed ... args)
+void search(Fins.Request id, Fins.Response response, mixed ... args)
 {
-
   array r = runSearch(id->variables->keywords);
 
   if(sizeof(r) > 25) r = r[0..24];
